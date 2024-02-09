@@ -3,14 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Changing Background Color</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Whatchu looking up here for 🤨</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
 </head>
-    <body class="container"> 
-        <span>
-            <h1>Simmons ID please 🤨</h1>
-            <label for="pwd">ID:</label>
-            <input type="password" id="pwd" name="pwd"> 
-        </span>
-    </body>
+<body class="container"> 
+    <div>
+        <h1>Simmons ID please 🤨</h1>
+        <label for="pwd">ID:</label>
+        <input type="password" id="pwd" name="pwd"> 
+        <button id="submitBtn">Submit</button>
+    </div>
+
+    <script>
+        // Instantiate bcrypt as an instance of bcryptjs
+        const bcrypt = dcodeIO.bcrypt;
+
+        document.getElementById('submitBtn').addEventListener('click', async () => {
+            const password = document.getElementById('pwd').value;
+            const hashedPassword = '$2y$10$v1ccApvCH08GALFocbYNb.4Fw0Iy69YVfwEDPGf9GigarL80rM1MW';
+            
+            // Check input password
+            try {
+                const match = await bcrypt.compare(password, hashedPassword);
+                if (match) {
+                    alert('Password correct! :)'); // REPLACE WITH TRANSITION TO OTHER PAGE
+                } else {
+                    alert('Incorrect password :(');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred');
+            }
+        });
+    </script>
+</body>
 </html>
