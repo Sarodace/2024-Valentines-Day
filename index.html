@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Whatchu looking up here for 🤨</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="flip/flip.min.css" />
 </head>
 <body class="container"> 
     <div>
@@ -27,9 +27,11 @@
             try {
                 const match = await bcrypt.compare(password, hashedPassword);
                 if (match) {
-                    alert('Password correct! :)'); // REPLACE WITH TRANSITION TO OTHER PAGE
+                    alert('Password correct! :)');
+                    sessionStorage.setItem('authorized', 'true');
+                    window.location.href = 'waiting.html';
                 } else {
-                    alert('Incorrect password :(');
+                    alert('Hmm, that\'s not it...');
                 }
             } catch (error) {
                 console.error('Error:', error);

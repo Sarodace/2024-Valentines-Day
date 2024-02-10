@@ -1,0 +1,36 @@
+html, body, .container {
+    height: 100%;
+}
+
+.container {
+    /* display: flex; */
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    height: 200px;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    height: 100vh;
+    background: linear-gradient(218deg, #ff8177, #ff867a, #ff8c7f, #f99185, #cf556c, #b12a5b);
+    background-size: 1200% 1200%;
+    animation: AnimationName 30s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 90%}
+    50%{background-position:100% 11%}
+    100%{background-position:0% 90%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 90%}
+    50%{background-position:100% 11%}
+    100%{background-position:0% 90%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 90%}
+    50%{background-position:100% 11%}
+    100%{background-position:0% 90%}
+}
