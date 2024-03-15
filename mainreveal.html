@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reveal!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            font-family: 'Roboto', sans-serif;
+        }
+        h1 {
+            margin-top: 50px;
+            transition: opacity 0.5s ease;
+            text-align: center; /* Center the text horizontally */
+        }
+        h2 {
+            margin-top: 20px;
+            transition: opacity 0.5s ease;
+            display: none; /* Initially hidden */
+            text-align: center; /* Center the text horizontally */
+        }
+        .hidden {
+            opacity: 0;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="text">Hi princess :)</h1>
+    <img src="date.gif" id="gif" style="display: none;">
+    <h2 id="message">Happy 7 years, baby 🥰</h2>
+    <audio id="audio" src="Ambient 1.wav"></audio>
+    <button onclick="changeMessage()">Next Message</button>
+
+    <script>
+        var messages = [
+            "Hi princess :)",
+            "Turns out your secret admirer is me :P",
+            "I'm sure you're wondering what this is all about",
+            "I unfortunately was a little more ambitious than I anticipated...",
+            "And it'll need a lot more work...",
+            "But here's a little example of what you can expect :)"
+        ];
+        var currentIndex = 0;
+        var gifShown = false;
+
+        function changeMessage() {
+            var text = document.getElementById("text");
+            var gif = document.getElementById("gif");
+            var message = document.getElementById("message");
+            var audio = document.getElementById("audio");
+            text.style.opacity = 0;
+            setTimeout(function() {
+                currentIndex++;
+                if (currentIndex >= messages.length) {
+                    currentIndex = messages.length - 1;
+                    gif.style.display = "block";
+                    message.style.display = "block";
+                    document.querySelector('button').disabled = true;
+                    audio.play(); // Start playing the audio
+                } else {
+                    gif.style.display = "none";
+                    message.style.display = "none";
+                }
+                text.textContent = messages[currentIndex];
+                text.style.opacity = 1;
+            }, 500);
+        }
+    </script>
+</body>
+</html>

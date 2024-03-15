@@ -11,68 +11,46 @@
             }, 5000);
         </script>
         <link rel="stylesheet" href="flip/flip.min.css" />
-    </head>
-    <body>
         <style>
-            .tick {
-                padding-bottom: 1em;
-                font-size: 1rem;
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans,
-                    Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+            /* Center the button horizontally */
+            .vertical-center {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
             }
 
-            .tick-label {
-                font-size: 0.375em;
-                text-align: center;
-            }
-
-            .tick-group {
-                margin: 0 0.25em;
-                text-align: center;
+            button {
+                margin-top: 20px; /* Add margin between the image and button */
+                padding: 15px 30px; /* Increase padding to make the button bigger */
+                font-size: 18px; /* Increase font size */
+                cursor: pointer;
             }
         </style>
-        
-        <div class="vertical-center">
-            <img src="logo.png"/>
-            <div class="tick" data-did-init="handleTickInit">
-                <div
-                    data-repeat="true"
-                    data-layout="horizontal multi-line fit"
-                    data-transform="preset(d, h, m, s) -> delay"
-                >
-                    <div class="tick-group">
-                        <div
-                            data-key="value"
-                            data-repeat="true"
-                            data-transform="pad(00) -> split -> delay"
-                        >
-                            <span data-view="flip"></span>
-                        </div>
+    </head>
+    <body>
+    <div class="vertical-center">
+        <img src="logo.png"/>
+        <button onclick="redirectToAnotherPage()">?</button>
+    </div>
 
-                        <span data-key="label" data-view="text" class="tick-label"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <script>
+        function redirectToAnotherPage() {
+            // Change the URL to the desired destination page
+            window.location.href = 'mainreveal.html';
+        }
+    </script>
 
-        <script>
-            function handleTickInit(tick) {
-                var nextYear = '2024-03-15T10:00:00.000Z';
-                Tick.count.down(nextYear).onupdate = function (value) {
-                    tick.value = value;
-                };
-            }
-            
-        </script>
-
-        <script>
-            // Check if the user is authorized to access the page
-            const authorized = sessionStorage.getItem('authorized');
-            if (!authorized) {
-                // If not authorized, redirect back to the sender page
-                window.location.href = 'index.html';
-            }
-        </script>
-        <script src="flip/flip.min.js"></script>
-    </body>
+    <script>
+        // Check if the user is authorized to access the page
+        const authorized = sessionStorage.getItem('authorized');
+        if (!authorized) {
+            // If not authorized, redirect back to the sender page
+            window.location.href = 'index.html';
+        }
+    </script>
+    <script src="flip/flip.min.js"></script>
+</body>
 </html>
